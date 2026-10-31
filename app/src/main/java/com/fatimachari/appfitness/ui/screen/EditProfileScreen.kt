@@ -66,6 +66,7 @@ fun EditProfileScreen(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
                 contentDescription = null,
                 modifier = Modifier
+                    .padding(start = 24.dp)
                     .size(100.dp)
                     .clip(CircleShape)
                     .background(Color.Black)
@@ -77,7 +78,7 @@ fun EditProfileScreen(
             }
         }
         Text(text = "Dades personals",fontWeight = FontWeight.Bold, modifier = Modifier
-            .padding(10.dp))
+            .padding(top = 16.dp, start = 8.dp))
 
         OutlinedTextField(
             value = nomNou,
