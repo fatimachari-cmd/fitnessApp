@@ -22,7 +22,19 @@ Android Studio
 
 Jetpack Compose
 
-Capturas de pantalla
+### Capturas de pantalla
 
-![Pantalla 1 ](FitnessApp1.png) ![Pantalla 2 ](fitnessApp2.png)
-
+<table>
+  <tr>
+    <td align="center">
+      <img src="FitnessApp1.png" width="250">
+      <br>
+      Pantalla de edición
+    </td>
+    <td align="center">
+      <img src="fitnessApp2.png" width="250">
+      <br>
+      Pantalla de perfil
+    </td>
+  </tr>
+</table>
