@@ -29,12 +29,12 @@ Jetpack Compose
     <td align="center">
       <img src="FitnessApp1.png" width="250">
       <br>
-      Pantalla de edición
+      Pantalla 1 
     </td>
     <td align="center">
       <img src="fitnessApp2.png" width="250">
       <br>
-      Pantalla de perfil
+      Pantalla 2 
     </td>
   </tr>
 </table>
