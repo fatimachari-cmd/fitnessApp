@@ -24,6 +24,5 @@ Jetpack Compose
 
 Capturas de pantalla
 
-![Pantalla 1 ](FitnessApp1.png)
+![Pantalla 1 ](FitnessApp1.png) ![Pantalla 2 ](fitnessApp2.png)
 
-![Pantalla 2 ](fitnessApp2.png)
