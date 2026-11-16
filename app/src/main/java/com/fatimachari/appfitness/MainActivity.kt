@@ -8,7 +8,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.MonitorWeight
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableDoubleStateOf
@@ -20,6 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.fatimachari.appfitness.ui.screen.EditProfileScreen
 import com.fatimachari.appfitness.ui.screen.ProfileScreen
+import com.fatimachari.appfitness.ui.screen.RutineScreen
+import com.fatimachari.appfitness.ui.screen.WeightTrackingScreen
 import com.fatimachari.appfitness.ui.theme.AppFitnessTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,18 +40,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AppFitnessTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
-
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding)
-                    ) {
-                        FitnessApp()
-                    }
-                }
+                FitnessApp()
             }
         }
     }
@@ -49,6 +48,9 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun FitnessApp() {
+
+    // Pestanya seleccionada a la barra de baix (0 = Perfil, 1 = Pes, 2 = Rutina)
+    var pantalla by remember { mutableIntStateOf(0) }
 
     var nom by remember { mutableStateOf("Laia Soler") }
     var email by remember { mutableStateOf("Laia.soler@gmail.com") }
@@ -70,9 +72,40 @@ fun FitnessApp() {
 
     var editant by remember { mutableStateOf(true) }
 
-    if (editant) {
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            NavigationBar {
+                NavigationBarItem(
+                    selected = pantalla == 0,
+                    onClick = { pantalla = 0 },
+                    icon = { Icon(Icons.Default.Person, contentDescription = "Perfil") },
+                    label = { Text("Perfil") }
+                )
+                NavigationBarItem(
+                    selected = pantalla == 1,
+                    onClick = { pantalla = 1 },
+                    icon = { Icon(Icons.Default.MonitorWeight, contentDescription = "Pes") },
+                    label = { Text("Pes") }
+                )
+                NavigationBarItem(
+                    selected = pantalla == 2,
+                    onClick = { pantalla = 2 },
+                    icon = { Icon(Icons.Default.FitnessCenter, contentDescription = "Rutina") },
+                    label = { Text("Rutina") }
+                )
+            }
+        }
+    ) { innerPadding ->
 
-        EditProfileScreen(
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+        ) {
+            when (pantalla) {
+                0 -> if (editant) {
+                    EditProfileScreen(
             nom,
             email,
             dataNaixement,
@@ -112,6 +145,13 @@ fun FitnessApp() {
             nivellActivitat
         ) {
             editant = true
+        }
+                }
+
+                1 -> WeightTrackingScreen(pes, pesObjectiu, alcada)
+
+                2 -> RutineScreen()
+            }
         }
     }
 }

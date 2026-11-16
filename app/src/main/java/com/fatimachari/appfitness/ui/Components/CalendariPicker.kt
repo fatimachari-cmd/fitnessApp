@@ -86,7 +86,7 @@ fun CalendariPicker (
 }
 
 // Funció auxiliar per mostrar la data
-private fun formatDate(millis: Long): String {
+fun formatDate(millis: Long): String {
 
     val formatter = SimpleDateFormat(
         "dd/MM/yyyy",
