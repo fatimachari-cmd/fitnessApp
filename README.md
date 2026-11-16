@@ -36,5 +36,10 @@ Jetpack Compose
       <br>
       Pantalla 2 
     </td>
+    <td>
+      <img src="Pantalla_de peso.png" width="250">
+      <br>
+      Pantalla 3
+    </td>
   </tr>
 </table>
